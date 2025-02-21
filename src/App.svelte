@@ -65,10 +65,28 @@
       color: getRandomColor(),
     },
   ];
-  let samplePoints: BasePoint[] = [
+  let blueSamplePoints: BasePoint[] = [
+    // Specimen Side
     { x: 45.75, y: 23 },
     { x: 45.75, y: 12.55 },
-    { x: 45.75, y: 2.12 }
+    { x: 45.75, y: 2.12 },
+
+    //Basket Side
+    { x: 45.75, y: 121.3 },
+    { x: 45.75, y: 131.7 },
+    { x: 45.75, y: 142 },
+  ];
+
+  let redSamplePoints: BasePoint[] = [
+    // Specimen Side
+    { x: 98.25, y: 23 },
+    { x: 98.25, y: 12.55 },
+    { x: 98.25, y: 2.12 },
+
+    //Basket Side
+    { x: 98.25, y: 121.3 },
+    { x: 98.25, y: 131.7 },
+    { x: 98.25, y: 142 },
   ];
 
   $: points = (() => {
@@ -85,6 +103,8 @@
     _points.push(startPointElem);
 
     if(sampleCircleRadius !== null && sampleCircleRadius > 0) {
+      let samplePoints = allianceColor === "red" ? redSamplePoints : blueSamplePoints;
+
       samplePoints.forEach((point, idx) => {
         let samplePointElem = new Two.Circle(
           x(point.x),
