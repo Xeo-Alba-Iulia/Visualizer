@@ -25,9 +25,9 @@
   let lineWidth = 0.57;
   let robotWidth = 16;
   let robotHeight = 16;
+  let sampleCircleRadius: number | null = null;
 
   let percent: number = 0;
-
 
 
   /**
@@ -65,6 +65,11 @@
       color: getRandomColor(),
     },
   ];
+  let samplePoints: BasePoint[] = [
+    { x: 45.75, y: 23 },
+    { x: 45.75, y: 12.55 },
+    { x: 45.75, y: 2.12 }
+  ];
 
   $: points = (() => {
     let _points = [];
@@ -78,6 +83,20 @@
     startPointElem.noStroke();
 
     _points.push(startPointElem);
+
+    if(sampleCircleRadius !== null && sampleCircleRadius > 0) {
+      samplePoints.forEach((point, idx) => {
+        let samplePointElem = new Two.Circle(
+          x(point.x),
+          y(point.y),
+          x(sampleCircleRadius as number)
+        );
+        samplePointElem.id = `point-sample-${idx}`;
+        samplePointElem.fill = "transparent";
+        samplePointElem.stroke = "orange";
+        _points.push(samplePointElem);
+      });
+    }
 
     lines.forEach((line, idx) => {
       [line.endPoint, ...line.controlPoints].forEach((point, idx1) => {
@@ -533,6 +552,7 @@ hotkeys('s', function(event, handler){
     bind:lines
     bind:robotWidth
     bind:robotHeight
+    bind:sampleCircleRadius
     bind:percent
     bind:robotXY
     bind:robotHeading

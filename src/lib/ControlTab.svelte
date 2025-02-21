@@ -10,6 +10,7 @@
   export let lines: Line[];
   export let robotWidth: number;
   export let robotHeight: number;
+  export let sampleCircleRadius: number | null;
   export let robotXY: BasePoint;
   export let robotHeading: number;
   export let x: d3.ScaleLinear<number, number, number>;
@@ -36,6 +37,13 @@
           type="number"
           class="pl-1.5 rounded-md bg-neutral-100 border-[0.5px] focus:outline-none w-16 dark:bg-neutral-950 dark:border-neutral-700"
           step="1"
+        />
+        <div class="font-extralight">Sample Circle Radius:</div>
+        <input
+          bind:value={sampleCircleRadius}
+          type="number"
+          class="pl-1.5 rounded-md bg-neutral-100 border-[0.5px] focus:outline-none w-16 dark:bg-neutral-950 dark:border-neutral-700"
+          step="0.5"
         />
       </div>
     </div>
