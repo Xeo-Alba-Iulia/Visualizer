@@ -26,6 +26,7 @@
   let robotWidth = 16;
   let robotHeight = 16;
   let sampleCircleRadius: number | null = null;
+  let allianceColor: "blue" | "red" = "blue";
 
   let percent: number = 0;
 
@@ -573,6 +574,7 @@ hotkeys('s', function(event, handler){
     bind:robotWidth
     bind:robotHeight
     bind:sampleCircleRadius
+    bind:allianceColor
     bind:percent
     bind:robotXY
     bind:robotHeading
